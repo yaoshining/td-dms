@@ -1,0 +1,130 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 widget-container-col" ui-sortable="sortableOptions" style="min-height: 210px" ng-init="widget1 = {}">
+                <div class="widget-box widget-color-green2" ng-class="{'fullscreen': widget1.isFullscreen}">
+                    <div class="widget-header">
+                        <h5 class="widget-title">历史记录</h5>
+                        <div class="widget-toolbar">
+                            <div class="widget-menu" dropdown>
+                                <a href data-action="settings" dropdown-toggle>
+                                    <i class="ebp-icon fa fa-bars"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right dropdown-light-blue dropdown-caret dropdown-closer">
+                                    <li>
+                                        <a data-toggle="tab" href="#dropdown1">Option#1</a>
+                                    </li>
+
+                                    <li>
+                                        <a data-toggle="tab" href="#dropdown2">Option#2</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href data-action="fullscreen" class="orange2" ng-click="fullscreen($event,widget1)">
+                                <i class="ebp-icon fa fa-expand"></i>
+                            </a>
+                            <a href data-action="reload">
+                                <i class="ebp-icon fa fa-refresh"></i>
+                            </a>
+                            <a href data-action="collapse" ng-click="widget1.isCollapsed = !widget1.isCollapsed">
+                                <i class="ebp-icon fa" ng-class="{'fa-chevron-up': !widget1.isCollapsed,'fa-chevron-down': widget1.isCollapsed}"></i>
+                            </a>
+                            <a href data-action="close">
+                                <i class="ebp-icon fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="widget-body" collapse="widget1.isCollapsed">
+                        <div class="widget-main no-padding ebp-scroll" scroll-options="{size: 200,styleClass: 'scroll-thin'}">
+                            <table class="table table-striped table-hover table-bordered">
+                                <thead class="thin-border-bottom">
+                                    <th>名称</th>
+                                    <th>时间</th>
+                                </thead>
+                                <tbody>
+                                    <tr class="info" ng-repeat="i in [0,1,2,3,4,5,6,7,8,9]">
+                                        <td>啊的撒打算</td>
+                                        <td>2014-05-06</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 widget-container-col" ui-sortable="sortableOptions" style="min-height: 210px">
+                <div class="widget-box widget-color-blue">
+                    <div class="widget-header">
+                        <h5 class="widget-title bigger lighter">
+                            <i class="ebp-icon fa fa-table"></i>
+                            待办工作
+                        </h5>
+                        <div class="widget-toolbar widget-toolbar-light no-border">
+
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main no-padding ebp-scroll" scroll-options="{size: 200}">
+                            <table class="table table-striped table-hover table-bordered">
+                                <thead class="thin-border-bottom">
+                                    <th>名称</th>
+                                    <th>内容</th>
+                                    <th>申请人</th>
+                                    <th>时间</th>
+                                </thead>
+                                <tbody>
+                                    <tr class="info" ng-repeat="i in [0,1,2,3,4,5,6,7,8,9]">
+                                        <td>名称</td>
+                                        <td>内容</td>
+                                        <td>申请人</td>
+                                        <td>2014-05-06</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="space-24"></div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 widget-container-col" ui-sortable="sortableOptions" style="min-height: 210px" ng-init="widget1 = {}">
+                <div class="widget-box widget-color-orange">
+                    <div class="widget-header">
+                        <h6 class="widget-title">
+                            <i class="ebp-icon fa fa-sort"></i>
+                            Small Header &amp; Collapsed
+                        </h6>
+                        <div class="widget-toolbar">
+                            <a href data-action="settings">
+                                <i class="ebp-icon fa fa-cog"></i>
+                            </a>
+                            <a href data-action="reload">
+                                <i class="ebp-icon fa fa-refresh"></i>
+                            </a>
+                            <a href data-action="collapse">
+                                <i class="ebp-icon fa" ng-class="{'fa-plus':widget3.isCollapsed,'fa-minus': !widget3.isCollapsed}" data-icon-show="fa-plus" data-icon-hide="fa-minus" ng-click="widget3.isCollapsed = !widget3.isCollapsed"></i>
+                            </a>
+                            <a href data-action="close">
+                                <i class="ebp-icon fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="widget-body" collapse="widget3.isCollapsed">
+                        <div class="widget-main no-padding">
+                            <carousel interval="myInterval">
+                                <slide ng-repeat="slide in slides" active="slide.active">
+                                    <img ng-src="{{slide.image}}" style="margin: auto;width: 100%" />
+                                    <div class="carousel-caption">
+                                        <h4>幻灯片{{$index}}</h4>
+                                        <p>{{slide.text}}</p>
+                                    </div>
+                                </slide>
+                            </carousel>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
