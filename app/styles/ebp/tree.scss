@@ -68,6 +68,16 @@
     left: 5px;
   }
 }
+.tree .tree-item {
+    &:hover {
+        background-color: #F0F7FC;
+    }
+}
+.tree .tree-branch .tree-branch-header {
+    &:hover {
+        background-color: #F0F7FC;
+    }
+}
 .tree .tree-branch:before, .tree .tree-item:before {
   display: inline-block;
   content: "";

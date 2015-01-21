@@ -5,7 +5,11 @@ define(function(){
             'css!styles/ebp/widgets'
         ],
         'docModule': [
-            'doc/module'
+            'doc/module',
+            'doc/controllers/SidebarController'
+        ],
+        'docModule.all': [
+            'doc/controllers/FileExplorerController'
         ],
         'dashboardModule': [
             'dashboard/module',
@@ -41,7 +45,8 @@ define(function(){
             'UIAndElements/controllers/BootstrapController'
         ],
         'UIAndElementsModule.treeView': [
-            'UIAndElements/controllers/TreeViewController'
+            'UIAndElements/controllers/TreeViewController',
+            'vendor/core/treeview'
         ],
         'UIAndElementsModule.tables': [
             'UIAndElements/controllers/tables/TablesController'

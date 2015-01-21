@@ -31,6 +31,7 @@ requirejs.config({
         'headroom': '../bower_components/headroom.js/dist/headroom.min',
         'angular-headroom': '../bower_components/headroom.js/dist/angular.headroom',
         'angular-xeditable': '../bower_components/angular-xeditable/dist/js/xeditable.min',
+        'angular-ui-tree': '../bower_components/angular-ui-tree/dist/angular-ui-tree.min',
         'id3': '../bower_components/id3/id3.min'
     },
     shim: {
@@ -56,6 +57,7 @@ requirejs.config({
         'ng-nestable': ['jquery-nestable'],
         'angular-headroom': ['headroom'],
         'angular-xeditable': ['angular','css!../bower_components/angular-xeditable/dist/css/xeditable'],
+        'angular-ui-tree': ['angular'],
         'stickUp': ['jquery'],
         'flot': ['jquery'],
         'plot': ['flot'],

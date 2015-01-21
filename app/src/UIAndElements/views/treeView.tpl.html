@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <div class="row">
+        <!--<div class="row">
             <div class="col-sm-6">
                 <div class="widget-box widget-color-blue2">
                     <div class="widget-header">
@@ -66,6 +66,47 @@
                                     </span>
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="widget-box widget-color-blue2">
+                    <div class="widget-header">
+                        <h4 class="widget-title lighter smaller">Choose Categories</h4>
+                    </div>
+
+                    <div class="widget-body">
+                        <div class="widget-main padding-8">
+                            <div ui-tree data-drag-enabled="true" ng-init="treeOptions = treeOptions1">
+                                <ul ui-tree-nodes="" ng-model="treeData1" class="tree">
+                                    <li ng-repeat="item in treeData1" data-collapsed="true" ui-tree-node data-collapsed data-nodrag ng-include="'src/UIAndElements/views/tree_nodes_render.tpl.html'"
+                                        ng-class="{'tree-branch': item.type=='folder','tree-item': item.type=='item'}">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="widget-box widget-color-green2">
+                    <div class="widget-header">
+                        <h4 class="widget-title lighter smaller">Choose Categories</h4>
+                    </div>
+
+                    <div class="widget-body">
+                        <div class="widget-main padding-8">
+                            <div ui-tree data-drag-enabled="true" ng-init="treeOptions = treeOptions2">
+                                <ul ui-tree-nodes="" ng-model="treeData2" class="tree">
+                                    <li ng-repeat="item in treeData2" data-collapsed="true" ui-tree-node data-collapsed data-nodrag ng-include="'src/UIAndElements/views/tree_nodes_render.tpl.html'"
+                                        ng-click="item.type=='item' && treeOptions.itemClicked($modelValue)"
+                                        ng-class="{'tree-branch': item.type=='folder','tree-item': item.type=='item'}">
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

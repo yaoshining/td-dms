@@ -22,12 +22,28 @@ define(['angular','conf/modules'],function(angular,modules){
         doc: {
             url: '/doc',
             views: {
+                'main.content': {
+                    template: '<div ui-view></div>'
+                },
                 'sidebar': {
-                    templateUrl: 'src/doc/views/sidebar.tpl.html'
+                    templateUrl: 'src/doc/views/sidebar.tpl.html',
+                    controller: 'SidebarController'
                 }
             },
             modules: {
-                homeModule: modules.docModule
+                docModule: modules.docModule
+            }
+        },
+        'doc.all': {
+            url: '/all',
+            views: {
+                '': {
+                    templateUrl: 'src/doc/views/fileExplorer.tpl.html',
+                    controller: 'FileExplorerController'
+                }
+            },
+            modules: {
+                docModule: modules['docModule.all']
             }
         },
         dashboard: {
@@ -90,7 +106,8 @@ define(['angular','conf/modules'],function(angular,modules){
             },
             modules: {
                 'UIAndElementsModule': modules['UIAndElementsModule.treeView'],
-                'ebp.tree': modules.ebpTreePlugin
+                'ebp.tree': modules.ebpTreePlugin,
+                'ui.tree': ['angular-ui-tree']
             }
         },
         'UIAndElements.tables': {

@@ -1,0 +1,22 @@
+<div ui-tree-handle class="tree-branch-header" ng-if="item.type=='folder'" ng-click="toggle(this)">
+    <span class="tree-branch-name">
+        <i class="icon-folder ebp-icon"
+           ng-class="(collapsed?(treeOptions.closedIcon || 'tree-plus'):(treeOptions.openedIcon || 'tree-minus'))+' '+item.iconClass"></i>
+        <span class="tree-label">{{item.name}}</span>
+    </span>
+    <div class="tree-loader hide" role="alert">
+        <div class="tree-loading"><i class="ebp-icon fa fa-refresh fa-spin blue"></i>
+        </div>
+    </div>
+</div>
+<span class="tree-item-name" ng-if="item.type=='item'">
+    <i class="icon-item ebp-icon" ng-class="item.iconClass || treeOptions.itemIcon || 'hide'"></i>
+    <span class="tree-label">{{item.name}}</span>
+</span>
+<ul ui-tree-nodes="" class="tree-branch-children" ng-model="item.children" ng-hide="collapsed" ng-if="item.children && item.children.length>0">
+    <li ng-repeat="item in item.children" ui-tree-node data-collapsed="true"
+        ng-class="{'tree-branch': item.type=='folder','tree-item': item.type=='item'}"
+        ng-click="item.type=='item' && treeOptions.itemClicked($modelValue)"
+        ng-include="'src/UIAndElements/views/tree_nodes_render.tpl.html'">
+    </li>
+</ul>
