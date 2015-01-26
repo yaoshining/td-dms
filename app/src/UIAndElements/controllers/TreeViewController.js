@@ -162,6 +162,9 @@ define(['UIAndElements/module'],function(module){
             closedIcon: 'fa fa-folder',
             itemClicked: function(model){
                 alert(model.name+' is clicked.');
+            },
+            folderClicked: function(model){
+                alert(model.type+' '+model.name+' is clicked.');
             }
         };
     }]);

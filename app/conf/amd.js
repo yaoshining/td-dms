@@ -57,7 +57,7 @@ requirejs.config({
         'ng-nestable': ['jquery-nestable'],
         'angular-headroom': ['headroom'],
         'angular-xeditable': ['angular','css!../bower_components/angular-xeditable/dist/css/xeditable'],
-        'angular-ui-tree': ['angular'],
+        'angular-ui-tree': ['angular','css!styles/ebp/tree'],
         'stickUp': ['jquery'],
         'flot': ['jquery'],
         'plot': ['flot'],

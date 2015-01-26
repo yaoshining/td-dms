@@ -106,8 +106,7 @@ define(['angular','conf/modules'],function(angular,modules){
             },
             modules: {
                 'UIAndElementsModule': modules['UIAndElementsModule.treeView'],
-                'ebp.tree': modules.ebpTreePlugin,
-                'ui.tree': ['angular-ui-tree']
+                'ebp.tree': modules.ebpTreePlugin
             }
         },
         'UIAndElements.tables': {
