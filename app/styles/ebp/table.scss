@@ -26,3 +26,19 @@
     background-repeat: repeat-x;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff8f8f8', endColorstr='#ffececec', GradientType=0);
 }
+.table.table-success {
+    thead {
+        tr {
+            background: #31bc86;
+            color: #FFFFFF;
+        }
+        th,td {
+            border-bottom: none;
+        }
+    }
+}
+.table-success.table-hover{
+    & > tbody > tr:hover > td, & > tbody > tr:hover > th {
+        background-color: rgba(129,208,177,.3);
+    }
+}

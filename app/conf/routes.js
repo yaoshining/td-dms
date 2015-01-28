@@ -43,7 +43,9 @@ define(['angular','conf/modules'],function(angular,modules){
                 }
             },
             modules: {
-                docModule: modules['docModule.all']
+                docModule: modules['docModule.all'],
+                'ebp.stickUp': ['plugins/core/ebp-stickup'],
+                'filesModule': modules.filesModule
             }
         },
         dashboard: {

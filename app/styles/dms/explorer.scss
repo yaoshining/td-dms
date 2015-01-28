@@ -1,0 +1,14 @@
+.file-explorer {
+    padding: 10px;
+    .label {
+        line-height: inherit;
+        height: auto;
+        position: relative;
+        top: -1px;
+    }
+    table {
+        label {
+            margin-bottom: 0;
+        }
+    }
+}
