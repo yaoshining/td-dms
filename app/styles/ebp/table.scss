@@ -38,7 +38,7 @@
     }
 }
 .table-success.table-hover{
-    & > tbody > tr:hover > td, & > tbody > tr:hover > th {
+    & > tbody > tr:hover > td, & > tbody > tr:hover > th,& > tbody > tr.checked > td, & > tbody > tr.checked > th {
         background-color: rgba(129,208,177,.3);
     }
 }

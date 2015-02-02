@@ -23,9 +23,19 @@
 
                     },
                     post: function postLink(scope, element, iAttrs, controller) {
-                        $timeout(function(){
-                            element.ebp_scroll(scope.scrollOptions);
-                        },0);
+                        function initScroll(){
+                            var options = scope.scrollOptions;
+                            if(scope.scrollOptions.size == 'inherit'){
+                                options.size = element.height();
+                            }
+                            $timeout(function(){
+                                element.ebp_scroll(options);
+                            },0);
+                        };
+                        initScroll();
+                        $(window).on('resize',function(){
+                            initScroll();
+                        });
                     }
                 }
             }

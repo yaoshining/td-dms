@@ -34,18 +34,29 @@ define(['angular','conf/modules'],function(angular,modules){
                 docModule: modules.docModule
             }
         },
-        'doc.all': {
-            url: '/all',
+        'doc.explorer': {
+            url: '/explorer/:type',
             views: {
                 '': {
                     templateUrl: 'src/doc/views/fileExplorer.tpl.html',
-                    controller: 'FileExplorerController'
+                    controller: 'FileExplorerController as fileExplorerCtrl'
                 }
             },
             modules: {
-                docModule: modules['docModule.all'],
-                'ebp.stickUp': ['plugins/core/ebp-stickup'],
-                'filesModule': modules.filesModule
+                docModule: modules['docModule.explorer'],
+                'filesModule': modules.filesModule,
+                'ebp.scroll': ['plugins/core/ebp-scroll'],
+                'ebp.selectable': ['plugins/core/ebp-selectable']
+            }
+        },
+        'doc.explorer.view': {
+            url: '/:view/:folderId',
+            views: {
+                'view': {
+                    templateUrl: function ($stateParams){
+                        return 'src/doc/views/explorer.'+$stateParams.view+'.tpl.html';
+                    }
+                }
             }
         },
         dashboard: {

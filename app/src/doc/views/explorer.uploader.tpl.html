@@ -1,0 +1,59 @@
+<div class="upload-dialog-wrapper slide-top" ng-controller="ExplorerUploaderController" ng-show="dialogView.display">
+    <div class="widget-box widget-color-blue no-margin">
+        <div class="widget-header">
+            <h5 class="widget-title bigger lighter">
+                <i class="ebp-icon fa fa-upload"></i>
+                上传完成
+            </h5>
+            <div class="widget-toolbar widget-toolbar-light no-border">
+
+            </div>
+        </div>
+        <div class="widget-body">
+            <div class="widget-main no-padding upload-list ebp-scroll" scroll-options="{size: 'inherit',styleClass: 'scroll-thin'}" ng-file-drop="onFileSelect($files)">
+                <!--<table class="table table-hover">
+                    <tbody>
+                        <tr ng-repeat="file in selectedFiles">
+                            <td>
+                                <i class="shortcut-sm shortcut-{{file.name.slice(file.name.lastIndexOf('.')+1,file.name.length)}}"></i>
+                                {{file.name}}
+                            </td>
+                            <td>
+                                {{file.size}}
+                            </td>
+                            <td>
+                                <a href>我的文件</a>
+                            </td>
+                            <td class="hidden-480">
+                                {{file.percent}}
+                                <span class="label label-success arrowed-right arrowed-in">上传成功</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>-->
+                <dl class="list-group no-padding no-margin">
+                    <dd href class="list-group-item clearfix file-prop-row slide-left" ng-repeat="file in selectedFiles">
+                        <div class="inline-masker" ng-show="file.lifecycle === 'uploading'" style="z-index:0;position: absolute;top: 0;left: 0;height: 100%;background: #f5f7ff -webkit-gradient(linear,left top,left bottom,color-stop(0,rgba(153,209,255,.8)),color-stop(.5,rgba(132,199,255,.8)),color-stop(1,rgba(108,188,255,.8)))" ng-style="{width: file.percent+'%'}"></div>
+                        <div class="file-prop-col file-name text-ellipsis">
+                            <i class="shortcut-sm" ng-class="'shortcut-'+file.ext"></i>
+                            {{file.name}}
+                        </div>
+                        <div class="file-prop-col file-size">
+                            {{file.size | filesize}}
+                        </div>
+                        <div class="file-prop-col file-dir">
+                            <a href>我的文件</a>
+                        </div>
+                        <div class="file-prop-col file-state">
+                            <span ng-hide="file.lifecycle === 'finished'">{{file.percent+'%'}}({{file.bitrate | filesize}}/s)</span>
+                            <span ng-show="file.lifecycle === 'finished'" class="label label-success arrowed-right arrowed-in">上传成功</span>
+                        </div>
+                        <div class="file-prop-col file-operations">
+                            <a ng-show="file.lifecycle == 'uploading'" href class="label label-grey">取消</a>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

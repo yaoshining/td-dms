@@ -1,0 +1,45 @@
+<table class="table table-hover table-success">
+    <thead style="display: none">
+    </thead>
+    <tbody ebp-selectable ui-options="selectableOptions">
+        <tr class="info" ng-if="folderAddHelper.show">
+            <td>
+                <label>
+                    <input type="checkbox" class="ebp" disabled>
+                    <span class="lbl"></span>
+                </label>
+            </td>
+            <td style="position: relative">
+                <i class="ebp-icon shortcut-sm shortcut-folder"></i>
+                <input ng-model="newFolder.name" />
+                <button class="label label-success no-border" ng-click="addFolder()">
+                    <i class="ebp-icon fa fa-check"></i>
+                </button>
+                <button class="label label-grey no-border" ng-click="dismissFolderAddHelper()">
+                    <i class="ebp-icon fa fa-times"></i>
+                </button>
+            </td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr class="info selectable-item" ng-repeat="doc in documents | orderBy:fileExplorerCtrl.predicate:fileExplorerCtrl.reverse" ng-class="{'checked ui-selected':doc.checked}" ng-model="doc">
+            <td style="width: 10px">
+                <label>
+                    <input type="checkbox" ng-model="doc.checked" ng-change="toggleItemCheck(doc)" class="ebp">
+                    <span class="lbl"></span>
+                </label>
+            </td>
+            <td style="position: relative">
+                <i class="ebp-icon shortcut-sm shortcut-{{doc.type}}"></i>
+                <a href ng-click="showDetail()">{{doc.name}}</a>
+                <div class="pull-right">
+                    <a href>
+                        <i class="ebp-icon fa"></i>
+                    </a>
+                </div>
+            </td>
+            <td width="16%">{{doc.size || '-'}}</td>
+            <td width="23%">{{doc.modifyTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+        </tr>
+    </tbody>
+</table>

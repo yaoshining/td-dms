@@ -1,0 +1,53 @@
+<div class="toolbar-item" style="width: 10px" ng-init="fileExplorerCtrl.predicate = 'modifyTime';fileExplorerCtrl.reverse = true">
+    <label>
+        <input type="checkbox" ng-model="fileExplorerCtrl.checkedAll" ng-click="toggleCheckAll()" class="ebp">
+        <span class="lbl"></span>
+    </label>
+</div>
+<div class="toolbar-item" ng-hide="showListToolButtons || getViewName() !== 'list'">
+    <span>
+        文件名
+        <i class="ebp-icon fa" ng-class="{'fa-arrow-up': !fileExplorerCtrl.reverse,'fa-arrow-down':fileExplorerCtrl.reverse}" ng-show="fileExplorerCtrl.predicate === 'name'"></i>
+    </span>
+</div>
+<div class="toolbar-item" ng-hide="showListToolButtons || getViewName() !== 'list'" style="width: 16%">
+    <span>
+        大小
+        <i class="ebp-icon fa" ng-class="{'fa-arrow-up': !fileExplorerCtrl.reverse,'fa-arrow-down':fileExplorerCtrl.reverse}" ng-show="fileExplorerCtrl.predicate === 'size'" style="margin-left: 2px"></i>
+    </span>
+</div>
+<div class="toolbar-item" ng-hide="showListToolButtons || getViewName() !== 'list'" style="width: 23%" ng-click="fileExplorerCtrl.predicate = 'modifyTime';fileExplorerCtrl.reverse = !fileExplorerCtrl.reverse">
+    <span>
+        修改日期
+        <i class="ebp-icon fa" ng-class="{'fa-arrow-up': !fileExplorerCtrl.reverse,'fa-arrow-down':fileExplorerCtrl.reverse}" ng-show="fileExplorerCtrl.predicate === 'modifyTime'" style="margin-left: 2px"></i>
+    </span>
+</div>
+<div class="toolbar-item" ng-show="showListToolButtons">
+    已选中{{getCheckedItems().length}}个文件/文件夹
+    <div class="btn-group no-padding" role="group" style="margin-left: 10px">
+        <button class="btn btn-sm btn-pink"><i class="ebp-icon fa fa-share-alt"></i>分享</button>
+        <button class="btn btn-sm btn-pink"><i class="ebp-icon fa fa-download"></i>下载</button>
+        <button class="btn btn-sm btn-danger"><i class="ebp-icon fa fa-download"></i>删除</button>
+        <div class="btn-group" style="margin-left: 1px">
+            <button type="button" class="btn btn-sm btn-pink dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <i class="ebp-icon fa fa-desktop"></i>推送到云设备
+                <span class="caret" style="border-top-color: #FFF"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href>无在线设备</a></li>
+                <li><a href>添加设备</a></li>
+            </ul>
+        </div>
+        <div class="btn-group" style="margin-left: 1px">
+            <button type="button" class="btn btn-sm btn-pink dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <i class="ebp-icon fa fa-desktop"></i>更多
+                <span class="caret" style="border-top-color: #FFF"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href>重命名</a></li>
+                <li><a href>复制到</a></li>
+                <li><a href>移动到</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

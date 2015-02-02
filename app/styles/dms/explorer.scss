@@ -1,14 +1,358 @@
+$explorerToolbarHeight: 41px;
+$explorerListToolbarHeight: 45px;
+$propertiesPanelHeight: 200px;
+$explorerInfoHeight: 24px;
+$explorerHeaderHeight: $explorerInfoHeight + $explorerListToolbarHeight;
+$smallShortCuts: '/images/icons/mime/small_icons.gif';
+$largeShortCuts: '/images/icons/mime/large_icons.png';
+$largeFolderIcons: '/images/icons/mime/large-f.gif';
+$fileTypes: txt,mp3,jpg,xls;
 .file-explorer {
     padding: 10px;
+    position: absolute;
+    top: $explorerToolbarHeight;
+    bottom: $propertiesPanelHeight;
+    width: 100%;
+    overflow: hidden;
     .label {
         line-height: inherit;
         height: auto;
         position: relative;
         top: -1px;
     }
-    table {
+    table,.explorer-list-toolbar {
         label {
             margin-bottom: 0;
         }
+    }
+}
+.explorer-toolbar {
+    position: relative;
+    z-index: auto;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #f5f5f5;
+    min-height: $explorerToolbarHeight;
+    line-height: $explorerToolbarHeight - 1px;
+    padding: 0 12px 0 12px;
+}
+.explorer-header {
+    height: $explorerHeaderHeight;
+    & > .explorer-info {
+        height: $explorerInfoHeight;
+        line-height: $explorerInfoHeight - 1px;
+    }
+    & > .explorer-list-toolbar {
+        display: table;
+        width: 100%;
+        height: $explorerListToolbarHeight;
+        line-height: $explorerListToolbarHeight - 1px;
+        background: #31bc86;
+        color: #FFFFFF;
+        margin-bottom: 10px;
+        box-sizing: content-box;
+        box-shadow: 0 0 5px rgba(#31bc86,.8);
+        & > .toolbar-item {
+            display: table-cell;
+            padding: 8px;
+            line-height: 2.3;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+}
+.explorer-content {
+    position: absolute;
+    top: $explorerHeaderHeight + 10px;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+}
+.explorer-thumbnail-item {
+    width: 10%;
+    display: inline-block;
+    min-width: 150px;
+    & > .caption {
+        & > p{
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+    & > .thumbnail {
+        display: block;
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 10px auto;
+        border-radius: 0;
+        border: 2px solid transparent;
+        &:active,&.active {
+            border-color: transparent;
+        }
+        & > .thumbnail-check {
+            visibility: hidden;
+            position: absolute;
+            text-align: center;
+            top: -2px;
+            left: -2px;
+            width: 20px;
+            height: 20px;
+            padding-top: 2px;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            border: 2px solid transparent;
+            -webkit-transition: all 0.2s ease-in-out;
+            -moz-transition: all 0.2s ease-in-out;
+            -ms-transition: all 0.2s ease-in-out;
+            -o-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+}
+.explorer-thumbnail-item.checked {
+    & > .thumbnail > .thumbnail-check {
+        background-color: #2e80dc;
+        &:before {
+            content: "\f00c";
+        }
+    }
+}
+.explorer-thumbnail-item.checked,.explorer-thumbnail-item:hover {
+    & > .thumbnail {
+        border-color: #2e80dc;
+        & > .thumbnail-check {
+            border-right-color: #2e80dc;
+            border-bottom-color: #2e80dc;
+            visibility: visible;
+        }
+    }
+}
+.properties-panel {
+    position: absolute;
+    bottom: 0;
+    height: $propertiesPanelHeight;
+    background-color: #e6e6e6;
+    left: 0;
+    right: 0;
+}
+.upload-dialog-wrapper {
+    position: absolute;
+    right: 30px;
+    bottom: 0;
+    width: 635px;
+    z-index: 101;
+    box-shadow: 0 0 20px -2px rgba(0,0,0,.5);
+    .upload-list {
+        height: 375px;
+        .file-prop-row {
+            padding: 8px 0;
+            border-width: 1px 0;
+        }
+        .file-prop-col {
+            display: inline-block;
+            float: left;
+            position: relative;
+            z-index: 2;
+            &.file-name{
+                width: 40%;
+                text-indent: 15px;
+            }
+            &.file-size {
+                width: 13%;
+            }
+            &.file-dir {
+                width: 13%;
+            }
+            &.file-state {
+                width: 24%;
+            }
+            &.file-operations {
+                width: 10%;
+            }
+        }
+    }
+}
+.shortcut-sm {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-top: -10px;
+    margin-bottom: -4px;
+    margin-right: 5px;
+    background: url($smallShortCuts) no-repeat scroll 9999px 9999px transparent;
+    &.shortcut-folder {
+        background-position: -5px -3px;
+    }
+    &.shortcut-xls,&.shortcut-xlsx {
+        background-position: -133px -83px;
+    }
+    &.shortcut-zip,&.shortcut-rar {
+        background-position: -357px -83px;
+    }
+    &.shortcut-exe,&.shortcut-msi,&.shortcut-dmg {
+        background-position: -325px -83px;
+    }
+    &.shortcut-txt {
+        background-position: -165px -83px;
+    }
+    &.shortcut-pdf {
+        background-position: -69px -83px;
+    }
+    &.shortcut-vsd {
+        background-position: -37px -83px;
+    }
+    &.shortcut-ppt,&.shortcut-pptx {
+        background-position: -261px -83px;
+    }
+    &.shortcut-doc,&.shortcut-docx {
+        background-position: -101px -83px;
+    }
+    &.shortcut-apk {
+        background-position: -389px -83px;
+    }
+    &.shortcut-dws,&.shortcut-dwt,&.shortcut-dxf,&.shortcut-dwg {
+        background-position: -6px -105px;
+    }
+    &.shortcut-mmap {
+        background-position: -37px -106px;
+    }
+    &.shortcut-xmind,&.shortcut-mm {
+        background-position: -69px -106px;
+    }
+    &.shortcut-ipa {
+        background-position: -293px -83px;
+    }
+    &.shortcut-psd {
+        background-position: -517px -83px;
+    }
+    &.shortcut-key {
+        background-position: -550px -83px;
+    }
+    &.shortcut-ai {
+        background-position: -583px -83px;
+    }
+    &.shortcut-torrent {
+        background-position: -453px -83px;
+    }
+    &.shortcut-jpg,&.shortcut-jpeg,&.shortcut-gif,&.shortcut-bpm,&.shortcut-png,
+    &.shortcut-jpe,&.shortcut-cur,&.shortcut-svg,&.shortcut-svgz,&.shortcut-tif,
+    &.shortcut-tiff,&.shortcut-ico{
+        background-position: -5px -83px;
+    }
+    &.shortcut-wma,&.shortcut-wav,&.shortcut-mp3,&.shortcut-aac,&.shortcut-ra,
+    &.shortcut-ram,&.shortcut-mp2,&.shortcut-ogg,&.shortcut-aif,&.shortcut-mpega,
+    &.shortcut-amr,&.shortcut-mid,&.shortcut-midi,&.shortcut-m4a,&.shortcut-ape,&.shortcut-flac {
+        background-position: -197px -83px;
+    }
+    &.shortcut-wmv,&.shortcut-rmvb,&.shortcut-mpeg4,&.shortcut-mpeg2,&.shortcut-flv,
+    &.shortcut-avi,&.shortcut-3gp,&.shortcut-mpga,&.shortcut-qt,&.shortcut-rm,&.shortcut-wmz,
+    &.shortcut-wmd,&.shortcut-wvx,&.shortcut-wmx,&.shortcut-wm,&.shortcut-swf,&.shortcut-mpg,
+    &.shortcut-mp4,&.shortcut-mkv,&.shortcut-mpeg,&.shortcut-mov,&.shortcut-asf {
+        background-position: -229px -83px;
+    }
+}
+.shortcut-lg {
+    display: inline-block;
+    width: 100%;
+    height: 100px;
+    background: url($largeShortCuts) no-repeat scroll -0px -0px transparent;
+    &.shortcut-folder {
+        background: url($largeFolderIcons) no-repeat scroll -24px 0 transparent;
+    }
+    &.shortcut-doc,&.shortcut-docx {
+        background-position: -462px -0px
+    }
+
+    &.shortcut-xls,&.shortcut-xlsx {
+        background-position: -308px -0px
+    }
+
+    &.shortcut-ppt,&.shortcut-pptx {
+        background-position: -616px -0px
+    }
+
+    &.shortcut-vsd {
+        background-position: -770px -0px
+    }
+
+    &.shortcut-pdf {
+        background-position: -924px -0px
+    }
+
+    &.shortcut-apk {
+        background-position: -1225px -0px
+    }
+
+    &.shortcut-dws,&.shortcut-dwt,&.shortcut-dxf,&.shortcut-dwg {
+        background-position: 0 -117px
+    }
+
+    &.shortcut-mmap {
+        background-position: -153px -117px
+    }
+
+    &.shortcut-xmind {
+        background-position: -306px -117px
+    }
+
+    &.shortcut-mm {
+        background-position: -460px -117px
+    }
+
+    &.shortcut-exe,&.shortcut-msi {
+        background-position: -1378px -0px
+    }
+
+    &.shortcut-dmg {
+        background-position: -2602px -0px
+    }
+
+    &.shortcut-ipa {
+        background-position: -1540px -0px
+    }
+
+    &.shortcut-zip {
+        background-position: -154px -0px
+    }
+
+    &.shortcut-rar {
+        background-position: -2142px -0px
+    }
+
+    &.shortcut-psd {
+        background-position: -2294px -0px
+    }
+
+    &.shortcut-key {
+        background-position: -2447px -0px
+    }
+
+    &.shortcut-ai {
+        background-position: -2753px -0px
+    }
+
+    &.shortcut-txt {
+        background-position: -1072px -0px
+    }
+
+    &.shortcut-torrent {
+        background-position: -1990px -0px
+    }
+    &.shortcut-jpg,&.shortcut-jpeg,&.shortcut-gif,&.shortcut-bmp,&.shortcut-png,&.shortcut-jpe,&.shortcut-cur,&.shortcut-svg,&.shortcut-svgz,&.shortcut-tif,&.shortcut-tiff,&.shortcut-ico {
+    }
+
+    &.shortcut-wma,&.shortcut-wav,&.shortcut-mp3,&.shortcut-aac,&.shortcut-ra,&.shortcut-ram,&.shortcut-mp2,&.shortcut-ogg,&.shortcut-aif,&.shortcut-mpega,&.shortcut-amr,&.shortcut-mid,&.shortcut-midi,&.shortcut-m4a {
+        background-position: -1836px -0px;
+    }
+
+    &.shortcut-wmv,&.shortcut-rmvb,&.shortcut-mpeg4,&.shortcut-mpeg2,&.shortcut-flv,&.shortcut-avi,&.shortcut-3gp,&.shortcut-mpga,&.shortcut-qt,&.shortcut-rm,&.shortcut-wmz,&.shortcut-wmd,&.shortcut-wvx,&.shortcut-wmx,&.shortcut-wm,&.shortcut-swf,&.shortcut-mpg,&.shortcut-mp4,&.shortcut-mkv,&.shortcut-mpeg,&.shortcut-mov,&.shortcut-asf {
+        background-position: -1685px -0px;
+    }
+}
+@each $type in $fileTypes {
+    .shortcut-#{$type} {
+
     }
 }

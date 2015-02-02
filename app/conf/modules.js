@@ -6,10 +6,12 @@ define(function(){
         ],
         'docModule': [
             'doc/module',
-            'doc/controllers/SidebarController'
+            'doc/controllers/SidebarController',
+            'css!styles/dms/explorer'
         ],
-        'docModule.all': [
-            'doc/controllers/FileExplorerController'
+        'docModule.explorer': [
+            'doc/controllers/FileExplorerController',
+            'doc/controllers/ExplorerUploaderController'
         ],
         'dashboardModule': [
             'dashboard/module',
@@ -36,7 +38,8 @@ define(function(){
         'filesModule': [
             'files/module',
             'files/services/attachService',
-            'files/repositories/Attachment'
+            'files/repositories/Attachment',
+            'files/filters/FileSizeFilter'
         ],
         'UIAndElementsModule' : [
             'UIAndElements/module'

@@ -56,9 +56,13 @@
   right: -5px;
   border-width: 10px 5px;
 }
+.label-success.arrowed-right:after {
+    border-left-color: #82AF6F;
+    -moz-border-left-colors: #82AF6F;
+}
 .label-success.arrowed-in-right:after {
-  border-color: #82AF6F transparent #82AF6F #82AF6F;
-  -moz-border-left-colors: #82AF6F;
+    border-color: #82AF6F transparent #82AF6F #82AF6F;
+    -moz-border-left-colors: #82AF6F;
 }
 .label-info.arrowed-in-right:after {
     border-color: #3a87ad transparent #3a87ad #3a87ad;

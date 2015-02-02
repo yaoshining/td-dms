@@ -1,96 +1,48 @@
-<div class="breadcrumbs" style="position: relative;z-index: auto;border-bottom: 1px solid #e5e5e5;background-color: #f5f5f5;min-height: 41px;line-height: 40px;padding: 0 12px 0 12px;">
-    <div class="btn-group" role="group">
-        <label type="button" class="btn btn-sm btn-primary" for="attach"><i class="ebp-icon fa fa-cloud-upload"></i>上传文件</label>
-        <button type="button" class="btn btn-sm btn-info" ng-click="showFolderAddHelper()"><i class="ebp-icon fa fa-plus-square"></i>新建文件夹</button>
-        <button type="button" class="btn btn-sm btn-info"><i class="ebp-icon fa fa-cloud-download"></i>下载文件</button>
-        <div class="btn-group" style="margin-left: 1px">
-            <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                我的设备
-                <span class="caret"></span>
-                <span class="sr-only">Toggle Dropdown</span>
+<section class="abs-content">
+    <header class="breadcrumbs explorer-toolbar">
+        <div class="btn-group" role="group">
+            <button type="file" ng-file-select="onFileSelect($files)" multiple accept="*" class="btn btn-sm btn-primary">
+                <i class="ebp-icon fa fa-cloud-upload"></i>上传文件
             </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">推送任务列表</a></li>
-                <li><a href="#">添加任务</a></li>
-            </ul>
-        </div>
-        <input id="attach" type="file" ng-file-select="onFileSelect($files)" multiple accept="*" style="display: none;" />
-    </div>
-    <div class="btn-group pull-right" style="margin-top: 6px">
-        <span type="button" class="btn btn-sm btn-white" ng-class="{'active': view=='list'}" ng-click="view='list'"><i class="ebp-icon fa fa-list"></i></span>
-        <span type="button" class="btn btn-sm btn-white" ng-class="{'active': view=='thumbnail'}"><i class="ebp-icon fa fa-th-large" ng-click="view='thumbnail'"></i></span>
-    </div>
-</div>
-<div class="file-explorer">
-    <div ng-if="view=='list'">
-        <table class="table table-hover table-success">
-            <thead ebp-stickup>
-                <th style="width: 10px">
-                    <label>
-                        <input type="checkbox" class="ebp">
-                        <span class="lbl"></span>
-                    </label>
-                </th>
-                <th>文件名</th>
-                <th>大小</th>
-                <th>修改日期<i class="ebp-icon fa fa-caret-down"></i></th>
-            </thead>
-            <tbody>
-                <tr class="info" ng-if="folderAddHelper.show">
-                    <td>
-                        <label>
-                            <input type="checkbox" class="ebp" disabled>
-                            <span class="lbl"></span>
-                        </label>
-                    </td>
-                    <td style="position: relative">
-                        <i class="ebp-icon fa fa-folder orange bigger-120" style="margin-right: 10px"></i>
-                        <input ng-model="newFolder.name" />
-                        <a href class="label label-success" ng-click="addFolder()">
-                            <i class="ebp-icon fa fa-check"></i>
-                        </a>
-                        <a href class="label label-grey" ng-click="dismissFolderAddHelper()">
-                            <i class="ebp-icon fa fa-times"></i>
-                        </a>
-                    </td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr class="info" ng-repeat="item in items">
-                    <td>
-                        <label>
-                            <input type="checkbox" class="ebp">
-                            <span class="lbl"></span>
-                        </label>
-                    </td>
-                    <td style="position: relative">
-                        <i class="ebp-icon fa fa-folder orange bigger-120" style="margin-right: 10px"></i>
-                        <a href ng-click="showDetail()">{{item.name}}</a>
-                        <div class="pull-right">
-                            <a href>
-                                <i class="ebp-icon fa"></i>
-                            </a>
-                        </div>
-                    </td>
-                    <td>{{item.size}}</td>
-                    <td>{{item.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div ng-if="view=='thumbnail'" class="slide-right">
-        <div>
-            <div class="col-xs-4 col-md-1" ng-repeat="i in [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]" style="position: relative" ng-click="showDetail()">
-                <a href="#" class="thumbnail">
-                    <img src="http://img4.duitang.com/uploads/blog/201403/28/20140328105625_Hfaxm.png" width="100%">
-                </a>
-                <div class="caption">
-                    <p style="text-align: center">File name</p>
-                </div>
+            <button type="button" class="btn btn-sm btn-info" ng-click="showFolderAddHelper()"><i class="ebp-icon fa fa-plus-square"></i>新建文件夹</button>
+            <button type="button" class="btn btn-sm btn-info"><i class="ebp-icon fa fa-cloud-download"></i>下载文件</button>
+            <div class="btn-group" style="margin-left: 1px">
+                <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    我的设备
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">推送任务列表</a></li>
+                    <li><a href="#">添加任务</a></li>
+                </ul>
             </div>
         </div>
+        <div class="btn-group pull-right" style="margin-top: 6px">
+            <span ui-sref-active="active" type="button" class="btn btn-sm btn-white">
+                <a ui-sref="{view: 'list'}"><i class="ebp-icon fa fa-list"></i></a>
+            </span>
+            <span ui-sref-active="active" type="button" class="btn btn-sm btn-white">
+                <a ui-sref="{view: 'thumbnail'}"><i class="ebp-icon fa fa-th-large"></i></a>
+            </span>
+        </div>
+    </header>
+    <main class="file-explorer">
+        <div class="explorer-header">
+            <div class="explorer-info">
+                <span>全部文件</span>
+                <span class="pull-right">已全部加载，共{{documents.length}}个</span>
+            </div>
+            <div class="explorer-list-toolbar" ng-include="'src/doc/views/explorer.list_toolbar.tpl.html'">
+            </div>
+        </div>
+        <div class="explorer-content">
+            <div style="height: 100%" ui-view="view" class="fade-in-up ebp-scroll" scroll-options="{size: 'inherit',styleClass: 'scroll-thin'}">
+
+            </div>
+        </div>
+    </main>
+    <footer ng-show="detailView" class="properties-panel" ng-include="'src/doc/views/explorer.props.tpl.html'">
+    </footer>
+    <div ng-include="'src/doc/views/explorer.uploader.tpl.html'">
     </div>
-</div>
-<div ng-show="detailView" class="slide-up" style="position: absolute;bottom: 0;height: 150px;background-color: #e6e6e6;left: 190px;right: 0">
-    asdaasdad
-</div>
+</section>

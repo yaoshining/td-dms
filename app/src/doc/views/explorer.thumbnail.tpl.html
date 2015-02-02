@@ -1,0 +1,32 @@
+<div style="margin-top: 10px">
+    <ul style="list-style: none;padding: 0;margin: 0;" ebp-selectable ui-options="selectableOptions">
+        <li class="explorer-thumbnail-item" ng-if="folderAddHelper.show">
+            <a href="#" class="thumbnail">
+                <div class="shortcut-lg shortcut-folder"></div>
+            </a>
+            <div class="caption">
+                <p style="text-align: center">
+                    <input style="width: 75px" ng-model="newFolder.name" />
+                    <a href class="label label-success" ng-click="addFolder()">
+                        <i class="ebp-icon fa fa-check"></i>
+                    </a>
+                    <a href class="label label-grey" ng-click="dismissFolderAddHelper()">
+                        <i class="ebp-icon fa fa-times"></i>
+                    </a>
+                </p>
+            </div>
+        </li>
+        <li class="explorer-thumbnail-item selectable-item" ng-model="item" ng-repeat="item in documents | orderBy:fileExplorerCtrl.predicate:fileExplorerCtrl.reverse" ng-click="showDetail()" ng-class="{'checked ui-selected': item.checked}">
+            <a href class="thumbnail">
+                <span class="thumbnail-check white" ng-click="$event.preventDefault();item.checked = !item.checked;toggleItemCheck(item)">
+                </span>
+                <div class="shortcut-lg shortcut-{{item.type}}"></div>
+            </a>
+            <div class="caption">
+                <p style="text-align: center">
+                    <a href>{{item.name}}</a>
+                </p>
+            </div>
+        </li>
+    </ul>
+</div>
