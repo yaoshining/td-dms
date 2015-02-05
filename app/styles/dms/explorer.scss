@@ -11,7 +11,7 @@ $fileTypes: txt,mp3,jpg,xls;
     padding: 10px;
     position: absolute;
     top: $explorerToolbarHeight;
-    bottom: $propertiesPanelHeight;
+    bottom: 0;
     width: 100%;
     overflow: hidden;
     .label {
@@ -23,6 +23,16 @@ $fileTypes: txt,mp3,jpg,xls;
     table,.explorer-list-toolbar {
         label {
             margin-bottom: 0;
+        }
+    }
+    .doc-item {
+        .item-buttons {
+            display: none;
+        }
+        &:hover {
+            .item-buttons {
+                display: block;
+            }
         }
     }
 }
@@ -136,6 +146,7 @@ $fileTypes: txt,mp3,jpg,xls;
     background-color: #e6e6e6;
     left: 0;
     right: 0;
+    z-index: 100;
 }
 .upload-dialog-wrapper {
     position: absolute;

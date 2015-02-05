@@ -1,16 +1,22 @@
 <div class="upload-dialog-wrapper slide-top" ng-controller="ExplorerUploaderController" ng-show="dialogView.display">
     <div class="widget-box widget-color-blue no-margin">
-        <div class="widget-header">
+        <div class="widget-header" ng-click="dialogView.isCollapsed =!dialogView.isCollapsed">
             <h5 class="widget-title bigger lighter">
                 <i class="ebp-icon fa fa-upload"></i>
                 上传完成
             </h5>
             <div class="widget-toolbar widget-toolbar-light no-border">
-
+                <a href>
+                    <i class="ebp-icon fa white" ng-class="{'fa-square-o': dialogView.isCollapsed,'fa-minus': !dialogView.isCollapsed}"></i>
+                </a>
+                <a href ng-click="$event.stopPropagation()">
+                    <i class="ebp-icon fa fa-times white" ng-click="dialogView.display = false"></i>
+                </a>
             </div>
         </div>
         <div class="widget-body">
-            <div class="widget-main no-padding upload-list ebp-scroll" scroll-options="{size: 'inherit',styleClass: 'scroll-thin'}" ng-file-drop="onFileSelect($files)">
+            <div class="widget-main no-padding upload-list ebp-scroll toggle" scroll-options="{size: 'inherit',styleClass: 'scroll-thin'}" ng-file-drop="onFileSelect($files)" ng-hide="dialogView.isCollapsed">
+                <div ng-show="selectedFiles.length<1" style="text-align: center">拖动到此处上传...</div>
                 <!--<table class="table table-hover">
                     <tbody>
                         <tr ng-repeat="file in selectedFiles">

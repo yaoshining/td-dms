@@ -23,6 +23,7 @@ requirejs.config({
         'jquery': '../bower_components/jquery/dist/jquery',
         'kreate': '../bower_components/kreate/dist/kreate.min',
         'jquery-ui': '../bower_components/jquery-ui/jquery-ui',
+        'buttons': '../bower_components/Buttons/js/buttons',
         'ui-autocomplete': '../bower_components/ui-autocomplete/autocomplete',
         /*require bootstrap.js to make bootstrap components work*/
         'bootstrap': '../bower_components/sass-bootstrap/dist/js/bootstrap',
@@ -46,6 +47,7 @@ requirejs.config({
         'angular-translate-static': ['angular','angular-translate'],
         'oclazyload': ['angular'],
         'ui-bootstrap-tpls': ['angular'],
+        'buttons': ['jquery'],
         'bootstrap': ['jquery'],
         'bootstrap-typeahead': ['bootstrap'],
         'kreate': ['jquery'],

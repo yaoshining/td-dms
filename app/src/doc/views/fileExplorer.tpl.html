@@ -1,21 +1,23 @@
 <section class="abs-content">
     <header class="breadcrumbs explorer-toolbar">
         <div class="btn-group" role="group">
-            <button type="file" ng-file-select="onFileSelect($files)" multiple accept="*" class="btn btn-sm btn-primary">
+            <button type="file" ng-file-select="onFileSelect($files)" multiple accept="*" class="button button-small button-raised button-primary">
                 <i class="ebp-icon fa fa-cloud-upload"></i>上传文件
             </button>
-            <button type="button" class="btn btn-sm btn-info" ng-click="showFolderAddHelper()"><i class="ebp-icon fa fa-plus-square"></i>新建文件夹</button>
-            <button type="button" class="btn btn-sm btn-info"><i class="ebp-icon fa fa-cloud-download"></i>下载文件</button>
-            <div class="btn-group" style="margin-left: 1px">
-                <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    我的设备
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">推送任务列表</a></li>
-                    <li><a href="#">添加任务</a></li>
+            <button type="button" class="button button-small button-raised button-royal" ng-click="showFolderAddHelper()"><i class="ebp-icon fa fa-plus-square"></i>新建文件夹</button>
+            <button type="button" class="button button-small button-raised button-royal"><i class="ebp-icon fa fa-cloud-download"></i>下载文件</button>
+            <span class="button-dropdown" data-buttons="dropdown">
+                <a href="#" class="button button-small button-raised button-royal">
+                    </i>我的设备 <i class="fa fa-caret-down"></i>
+                </a>
+
+                <ul class="button-dropdown-list is-below">
+                    <li><a href="http://unicorn-ui.com/">推送任务列表</a></li>
+                    <li class="button-dropdown-divider">
+                        <a href="http://unicorn-ui.com/">添加任务</a>
+                    </li>
                 </ul>
-            </div>
+            </span>
         </div>
         <div class="btn-group pull-right" style="margin-top: 6px">
             <span ui-sref-active="active" type="button" class="btn btn-sm btn-white">
@@ -26,7 +28,7 @@
             </span>
         </div>
     </header>
-    <main class="file-explorer">
+    <main class="file-explorer" ebp-drag-enter="onDragEnter">
         <div class="explorer-header">
             <div class="explorer-info">
                 <span>全部文件</span>
@@ -41,7 +43,7 @@
             </div>
         </div>
     </main>
-    <footer ng-show="detailView" class="properties-panel" ng-include="'src/doc/views/explorer.props.tpl.html'">
+    <footer ng-show="detailView" class="properties-panel slide-right" ng-include="'src/doc/views/explorer.props.tpl.html'">
     </footer>
     <div ng-include="'src/doc/views/explorer.uploader.tpl.html'">
     </div>

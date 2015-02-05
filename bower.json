@@ -40,6 +40,10 @@
     "tinycon": "~0.6.3",
     "angular-ui-calendar": "~0.8.1",
     "malihu-custom-scrollbar-plugin": "~3.0.7",
-    "angular-ui-tree": "~2.1.5"
+    "angular-ui-tree": "~2.1.5",
+    "normalize.css": "~3.0.2",
+    "Buttons": "~2.0.0",
+    "Colors": "mrmrs/colors#~2.0.0",
+    "Hover": "~2.0.2"
   }
 }

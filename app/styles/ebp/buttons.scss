@@ -1,3 +1,9 @@
+@import "../../bower_components/Buttons/scss/buttons";
+.button {
+    .fa {
+        margin-right: 5px;
+    }
+}
 .btn {
     display: inline-block;
     color: #FFF!important;

@@ -46,7 +46,8 @@ define(['angular','conf/modules'],function(angular,modules){
                 docModule: modules['docModule.explorer'],
                 'filesModule': modules.filesModule,
                 'ebp.scroll': ['plugins/core/ebp-scroll'],
-                'ebp.selectable': ['plugins/core/ebp-selectable']
+                'ebp.selectable': ['plugins/core/ebp-selectable'],
+                'ebp.drag': ['plugins/core/ebp-drag']
             }
         },
         'doc.explorer.view': {

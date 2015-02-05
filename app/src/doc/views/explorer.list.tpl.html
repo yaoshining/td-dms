@@ -22,7 +22,7 @@
             <td>-</td>
             <td>-</td>
         </tr>
-        <tr class="info selectable-item" ng-repeat="doc in documents | orderBy:fileExplorerCtrl.predicate:fileExplorerCtrl.reverse" ng-class="{'checked ui-selected':doc.checked}" ng-model="doc">
+        <tr class="info selectable-item doc-item" ng-repeat="doc in documents | orderBy:fileExplorerCtrl.predicate:fileExplorerCtrl.reverse" ng-class="{'checked ui-selected':doc.checked}" ng-model="doc">
             <td style="width: 10px">
                 <label>
                     <input type="checkbox" ng-model="doc.checked" ng-change="toggleItemCheck(doc)" class="ebp">
@@ -32,9 +32,18 @@
             <td style="position: relative">
                 <i class="ebp-icon shortcut-sm shortcut-{{doc.type}}"></i>
                 <a href ng-click="showDetail()">{{doc.name}}</a>
-                <div class="pull-right">
+                <div class="pull-right item-buttons">
+                    <a href style="margin-right: 5px" ng-mousedown="$event.stopPropagation()" ng-click="showDetailView(doc)">
+                        <i class="ebp-icon bigger-130 fa fa-list-alt"></i>
+                    </a>
+                    <a href style="margin-right: 5px">
+                        <i class="ebp-icon bigger-130 fa fa-share-alt"></i>
+                    </a>
+                    <a href style="margin-right: 5px">
+                        <i class="ebp-icon bigger-130 fa fa-download"></i>
+                    </a>
                     <a href>
-                        <i class="ebp-icon fa"></i>
+                        <i class="ebp-icon bigger-130 fa fa-caret-square-o-down"></i>
                     </a>
                 </div>
             </td>

@@ -9,7 +9,7 @@ define(['doc/module'],function (module) {
         '$timeout',function($scope,$log,attachService,$timeout){
         $scope.dialogView = {
             display: false,
-            collapsed: false
+            isCollapsed: false
         };
         $scope.selectedFiles = [];
         $scope.progressMasker = false;

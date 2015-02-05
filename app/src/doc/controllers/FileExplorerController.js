@@ -8,11 +8,18 @@ define(['doc/module','angular'],function(module,angular){
         '$log',
         function($scope,$state,$log){
         var self = this;
-        $scope.detailView = true;
+        $scope.onDragEnter = function(){
+            $scope.$broadcast('fileSelected',[]);
+            $scope.$digest();
+        };
+        $scope.detailView = false;
         $scope.view = $state.params.view;
         $scope.folderAddHelper = {};
         $scope.showListToolButtons = false;
         $scope.showDetail = function(){
+            $scope.detailView = true;
+        };
+        $scope.showDetailView = function(doc){
             $scope.detailView = true;
         };
         $scope.showFolderAddHelper = function(){
@@ -77,7 +84,7 @@ define(['doc/module','angular'],function(module,angular){
             return $state.params.view;
         };
         $scope.selectableOptions = {
-            filter: ".selectable-item",
+            filter: ".selectable-item:not(.checked)",
             events: {
                 selecting: function(event, doc) {
                     doc.checked = !(doc.checked);
